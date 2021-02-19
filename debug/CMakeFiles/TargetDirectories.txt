@@ -1,0 +1,4 @@
+C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir
+C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/edit_cache.dir
+C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/main.dir
+C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/rebuild_cache.dir
