@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/pong_core.dir/src/ai.cpp.obj"
   "CMakeFiles/pong_core.dir/src/ball.cpp.obj"
   "CMakeFiles/pong_core.dir/src/game.cpp.obj"
+  "CMakeFiles/pong_core.dir/src/obstacle.cpp.obj"
   "CMakeFiles/pong_core.dir/src/paddle.cpp.obj"
   "CMakeFiles/pong_core.dir/src/player.cpp.obj"
   "libpong_core.a"

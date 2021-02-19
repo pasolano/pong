@@ -33,22 +33,23 @@ void Game::collision()
     // reverse x velocity if hits paddle
     if (playerBounds.intersects(ballBounds))
     {
+        // makes sure velocity only flips once when hitting paddle
         if (this->ball.vel.first < 0)
+        {
+            this->coll = true;
             this->ball.vel.first *= -this->surprise(0);
-        if (this->ball.vel.first > 0)
-            this->ball.shape.move(1, 0);
-        else
-            this->ball.shape.move(-1, 0);
+        }
     }
 
     else if (aiBounds.intersects(ballBounds))
     {
+        
+        // makes sure velocity only flips once when hitting paddle
         if (this->ball.vel.first > 0)
+        {
+            this->coll = true;
             this->ball.vel.first *= -this->surprise(0);
-        if (this->ball.vel.first > 0)
-            this->ball.shape.move(1, 0);
-        else
-            this->ball.shape.move(-1, 0);
+        }
     }
         
 
@@ -56,28 +57,59 @@ void Game::collision()
     auto ballPos = this->ball.shape.getPosition();
     auto winSize = this->app->getSize();
 
-    // reverse y velocity if hits top or bottom wall
-    if (((int) ballPos.y == 0) || (ballRadius * 2 + (int) ballPos.y == winSize.y))
+    // reverse y velocity if hits top
+    if ((int) ballPos.y == 0)
     {
-        this->ball.vel.second *= -this->surprise(1);
-        if (this->ball.vel.second > 0)
-            this->ball.shape.move(0, 1);
-        else
-            this->ball.shape.move(0, -1);
+        if (this->ball.vel.second < 0)
+        {
+            this->coll = true;
+            this->ball.vel.second *= -this->surprise(1);
+        }
     }
-    // give points if hits left or right wall
+
+    if (ballRadius * 2 + (int) ballPos.y == winSize.y)
+    {
+        if (this->ball.vel.second > 0)
+        {
+            this->coll = true;
+            this->ball.vel.second *= -this->surprise(1);
+        }
+    }
+    // ai scores
     if (ballRadius - (int) ballPos.x == 0)
     {
         this->score.second++;
         this->ball.shape.setPosition(400, 300);
         this->ball.vel = {-0.5, -0.75};
+        this->aiScored = true;
     }
 
+    // player scores
     if (ballRadius + (int) ballPos.x == winSize.x)
     {
         this->score.first++;
         this->ball.shape.setPosition(400, 300);
         this->ball.vel = {-0.5, -0.75};
+        this->playerScored = true;
+    }
+
+    // ball hits obstacle
+    for (int i = 0; i < this->obstacles.size(); i++)
+    {
+        if (this->obstacles.at(i)->shape.getGlobalBounds().intersects(ballBounds))
+        {
+            this->coll = true;
+            this->ball.vel.first *= -this->surprise(0);
+            if (this->ball.vel.first > 0)
+                this->ball.shape.move(1, 0);
+            else
+                this->ball.shape.move(-1, 0);
+            this->ball.vel.second *= -this->surprise(1);
+            if (this->ball.vel.second > 0)
+                this->ball.shape.move(0, 1);
+            else
+                this->ball.shape.move(0, -1);
+        }
     }
 };
 
@@ -134,4 +166,7 @@ void Game::restart()
     this->score = {0, 0};
     this->playerInput = None;
     this->aiInput = None;
+    this->coll = false;
+    this->playerScored = false;
+    this->aiScored = false;
 }

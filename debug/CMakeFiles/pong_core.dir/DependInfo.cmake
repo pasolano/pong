@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/pablo/Documents/classes/gamedes/pong/src/ai.cpp" "C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir/src/ai.cpp.obj"
   "C:/Users/pablo/Documents/classes/gamedes/pong/src/ball.cpp" "C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir/src/ball.cpp.obj"
   "C:/Users/pablo/Documents/classes/gamedes/pong/src/game.cpp" "C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir/src/game.cpp.obj"
+  "C:/Users/pablo/Documents/classes/gamedes/pong/src/obstacle.cpp" "C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir/src/obstacle.cpp.obj"
   "C:/Users/pablo/Documents/classes/gamedes/pong/src/paddle.cpp" "C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir/src/paddle.cpp.obj"
   "C:/Users/pablo/Documents/classes/gamedes/pong/src/player.cpp" "C:/Users/pablo/Documents/classes/gamedes/pong/debug/CMakeFiles/pong_core.dir/src/player.cpp.obj"
   )

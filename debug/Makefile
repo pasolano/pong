@@ -262,6 +262,33 @@ src/game.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\pong_core.dir\build.make CMakeFiles/pong_core.dir/src/game.cpp.s
 .PHONY : src/game.cpp.s
 
+src/obstacle.obj: src/obstacle.cpp.obj
+
+.PHONY : src/obstacle.obj
+
+# target to build an object file
+src/obstacle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pong_core.dir\build.make CMakeFiles/pong_core.dir/src/obstacle.cpp.obj
+.PHONY : src/obstacle.cpp.obj
+
+src/obstacle.i: src/obstacle.cpp.i
+
+.PHONY : src/obstacle.i
+
+# target to preprocess a source file
+src/obstacle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pong_core.dir\build.make CMakeFiles/pong_core.dir/src/obstacle.cpp.i
+.PHONY : src/obstacle.cpp.i
+
+src/obstacle.s: src/obstacle.cpp.s
+
+.PHONY : src/obstacle.s
+
+# target to generate assembly for a file
+src/obstacle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\pong_core.dir\build.make CMakeFiles/pong_core.dir/src/obstacle.cpp.s
+.PHONY : src/obstacle.cpp.s
+
 src/paddle.obj: src/paddle.cpp.obj
 
 .PHONY : src/paddle.obj
@@ -338,6 +365,9 @@ help:
 	@echo ... src/game.obj
 	@echo ... src/game.i
 	@echo ... src/game.s
+	@echo ... src/obstacle.obj
+	@echo ... src/obstacle.i
+	@echo ... src/obstacle.s
 	@echo ... src/paddle.obj
 	@echo ... src/paddle.i
 	@echo ... src/paddle.s

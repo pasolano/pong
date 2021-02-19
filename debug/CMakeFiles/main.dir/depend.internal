@@ -5,8 +5,26 @@ CMakeFiles/main.dir/bin/main.cpp.obj
  ../include/ai.h
  ../include/ball.h
  ../include/game.h
+ ../include/obstacle.h
  ../include/paddle.h
  ../include/player.h
+ C:/Program Files (x86)/SFML/include/SFML/Audio.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/AlResource.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/Export.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/InputSoundFile.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/Listener.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/Music.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/OutputSoundFile.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/Sound.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundBuffer.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundBufferRecorder.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundFileFactory.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundFileFactory.inl
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundFileReader.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundFileWriter.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundRecorder.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundSource.hpp
+ C:/Program Files (x86)/SFML/include/SFML/Audio/SoundStream.hpp
  C:/Program Files (x86)/SFML/include/SFML/Config.hpp
  C:/Program Files (x86)/SFML/include/SFML/Graphics.hpp
  C:/Program Files (x86)/SFML/include/SFML/Graphics/BlendMode.hpp

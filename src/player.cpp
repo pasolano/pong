@@ -47,6 +47,11 @@ void Player::drawAll()
     this->draw(this->game->playerPaddle.shape);
     this->draw(this->game->aiPaddle.shape);
     this->draw(this->game->ball.shape);
+    
+    for (int i = 0; i < this->game->obstacles.size(); i++)
+    {
+        this->draw(this->game->obstacles.at(i)->shape);
+    }
 };
 
 void Player::gameOver(int whoWon)
@@ -68,6 +73,45 @@ void Player::gameOver(int whoWon)
     this->draw(gameOverMsg);
 };
 
+void Player::sounds()
+{
+    if (this->game->coll)
+    {
+        // make sound
+        static sf::SoundBuffer buffer;
+        if (!buffer.loadFromFile("../data/beep.wav"))
+            throw "Could not load sound";
+        static sf::Sound sound;
+        sound.setBuffer(buffer);
+        sound.play();
+        this->game->coll = false;
+    }
+
+    if (this->game->playerScored)
+    {
+        // make sound
+        static sf::SoundBuffer buffer;
+        if (!buffer.loadFromFile("../data/ping.wav"))
+            throw "Could not load sound";
+        static sf::Sound sound;
+        sound.setBuffer(buffer);
+        sound.play();
+        this->game->playerScored = false;
+    }
+
+    if (this->game->aiScored)
+    {
+        // make sound
+        static sf::SoundBuffer buffer;
+        if (!buffer.loadFromFile("../data/error.wav"))
+            throw "Could not load sound";
+        static sf::Sound sound;
+        sound.setBuffer(buffer);
+        sound.play();
+        this->game->aiScored = false;
+    }
+}
+
 void Player::updateView()
 {
     auto score = this->game->score;
@@ -76,5 +120,8 @@ void Player::updateView()
     else if (score.second >= 11)
         this->gameOver(1);
     else
+    {
+        this->sounds();
         this->drawAll();
+    }
 };

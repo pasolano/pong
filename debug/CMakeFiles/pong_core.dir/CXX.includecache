@@ -17,6 +17,12 @@ paddle.h
 ../include/paddle.h
 ball.h
 ../include/ball.h
+obstacle.h
+../include/obstacle.h
+
+../include/obstacle.h
+SFML/Graphics.hpp
+-
 
 ../include/paddle.h
 SFML/Graphics.hpp

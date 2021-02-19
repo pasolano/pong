@@ -4,8 +4,26 @@
 CMakeFiles/main.dir/bin/main.cpp.obj: ../include/ai.h
 CMakeFiles/main.dir/bin/main.cpp.obj: ../include/ball.h
 CMakeFiles/main.dir/bin/main.cpp.obj: ../include/game.h
+CMakeFiles/main.dir/bin/main.cpp.obj: ../include/obstacle.h
 CMakeFiles/main.dir/bin/main.cpp.obj: ../include/paddle.h
 CMakeFiles/main.dir/bin/main.cpp.obj: ../include/player.h
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/AlResource.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/Export.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/InputSoundFile.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/Listener.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/Music.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/OutputSoundFile.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/Sound.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundBuffer.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundBufferRecorder.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundFileFactory.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundFileFactory.inl
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundFileReader.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundFileWriter.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundRecorder.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundSource.hpp
+CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Audio/SoundStream.hpp
 CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Config.hpp
 CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Graphics.hpp
 CMakeFiles/main.dir/bin/main.cpp.obj: C:/Program\ Files\ (x86)/SFML/include/SFML/Graphics/BlendMode.hpp

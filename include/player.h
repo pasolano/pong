@@ -1,6 +1,6 @@
-// have one method for drawActor(actor)
-
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
 #include "game.h"
 
 #ifndef PLAYER_H
@@ -17,6 +17,7 @@ class Player
         void update();
         void draw(sf::Drawable&);
         void drawAll();
+        void sounds();
         void gameOver(int);
         void updateView();
 
