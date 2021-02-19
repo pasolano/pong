@@ -5,7 +5,7 @@ AI::AI(Game &gameobj)
     this->game = &gameobj;
 }
 
-void AI::update(sf::Int64 deltaMs)
+void AI::update()
 {
     auto ballPos = this->game->ball.shape.getPosition();
     auto paddlePos = this->game->aiPaddle.shape.getPosition();

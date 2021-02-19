@@ -1,5 +1,4 @@
 #include "ball.h"
-#include <iostream>
 
 Ball::Ball(int x, int y)
 {

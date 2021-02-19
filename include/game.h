@@ -17,6 +17,7 @@ class Game
         direction aiInput{None};
         sf::RenderWindow *app;
 
+        float surprise(int);
         void collision();
         void update(sf::Int64);
         void restart();

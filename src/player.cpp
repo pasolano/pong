@@ -1,4 +1,3 @@
-#include <iostream>
 #include <string>
 #include "player.h"
 
@@ -16,10 +15,11 @@ Player::Player(sf::RenderWindow &app, Game &gameObj)
     this->scoreText.setCharacterSize(30);
     this->scoreText.setFillColor(sf::Color::White);
     this->scoreText.setStyle(sf::Text::Regular);
+    this->scoreText.setPosition(10, 10);
     this->scoreText.setString("0 0");
 };
 
-void Player::update(sf::Int32 deltaMs)
+void Player::update()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
         this->game->playerInput = Up;
@@ -56,6 +56,7 @@ void Player::gameOver(int whoWon)
     gameOverMsg.setCharacterSize(80);
     gameOverMsg.setFillColor(sf::Color::White);
     gameOverMsg.setStyle(sf::Text::Regular);
+    gameOverMsg.setPosition(15, 15);
 
     std::string winner;
     if (whoWon)

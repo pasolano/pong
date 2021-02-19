@@ -4,7 +4,6 @@
 #include "game.h"
 #include "paddle.h"
 #include "player.h"
-#include <iostream>
 #include <utility>
 
 int main(int argc, char** argv)
@@ -37,12 +36,12 @@ int main(int argc, char** argv)
     }
     // get time elapsed
       dt = delta.restart();
-      sf::Int64 deltaMs = dt.asMicroseconds();
+      sf::Int64 deltaMicro = dt.asMicroseconds();
 
       // HOW TO MAKE SURE PLAYER VIEW HAS MOST RECENT GRAPHICS BUT GAME HAS MOST RECENT INPUTS
-      player.update(deltaMs);
-      ai.update(deltaMs);
-      game.update(deltaMs);
+      player.update();
+      ai.update();
+      game.update(deltaMicro);
       player.updateView();
 
       // display

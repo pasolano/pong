@@ -7,7 +7,7 @@
 class Ball
 {
     public:
-        std::pair <int, int> vel{-2, -1};
+        std::pair <float, float> vel{-0.5, -0.75};
         sf::CircleShape shape{10.f};
 
         // Constructor

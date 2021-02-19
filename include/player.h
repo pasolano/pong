@@ -14,7 +14,7 @@ class Player
         sf::Text scoreText;
         sf::Font font;
 
-        void update(sf::Int32);
+        void update();
         void draw(sf::Drawable&);
         void drawAll();
         void gameOver(int);

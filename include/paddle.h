@@ -7,7 +7,7 @@
 class Paddle
 {
     public:
-        std::pair <int, int> vel;
+        std::pair <float, float> vel;
         sf::RectangleShape shape{sf::Vector2f(10, 75)};
 
         // Constructor

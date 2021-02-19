@@ -12,7 +12,7 @@
 class AI
 {
     public:
-        void update(sf::Int64);
+        void update();
         Game *game;
 
         // constructor
