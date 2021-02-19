@@ -1,6 +1,6 @@
-#include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
+#include <SFML/Graphics.hpp>
+#include <string>
 #include "game.h"
 
 #ifndef PLAYER_H
@@ -17,6 +17,7 @@ class Player
         void update();
         void draw(sf::Drawable&);
         void drawAll();
+        void makeSound(std::string, bool&);
         void sounds();
         void gameOver(int);
         void updateView();

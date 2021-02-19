@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "game.h"
-#include <utility>
 
+// constructor
 Game::Game(sf::RenderWindow &App)
 {
     this->app = &App;
@@ -12,11 +12,16 @@ Game::Game(sf::RenderWindow &App)
 float Game::surprise(int axis)
 {
     float vel;
+
+    // choose which axis the perturbation is for
     if (axis)
         vel = this->ball.vel.second;
     else
         vel = this->ball.vel.first;
 
+    // decides the range of the perturbation
+    // if abs(vel) > 1, then vel * a number between 1 and 0.5
+    // otherwise, vel * a number between 1.5 and 1
     if (vel > 1.f || vel < -1.f)
         return 0.5 + (float) (rand()) / ((float) (RAND_MAX/(0.5)));
     else
@@ -30,7 +35,7 @@ void Game::collision()
     auto aiBounds = this->aiPaddle.shape.getGlobalBounds();
     auto ballBounds = this->ball.shape.getGlobalBounds();
 
-    // reverse x velocity if hits paddle
+    // reverse ball's x velocity if hits player paddle
     if (playerBounds.intersects(ballBounds))
     {
         // makes sure velocity only flips once when hitting paddle
@@ -41,9 +46,9 @@ void Game::collision()
         }
     }
 
+    // reverse ball's x velocity if hits ai paddle
     else if (aiBounds.intersects(ballBounds))
     {
-        
         // makes sure velocity only flips once when hitting paddle
         if (this->ball.vel.first > 0)
         {
@@ -51,15 +56,15 @@ void Game::collision()
             this->ball.vel.first *= -this->surprise(0);
         }
     }
-        
 
     float ballRadius{this->ball.shape.getRadius()};
     auto ballPos = this->ball.shape.getPosition();
     auto winSize = this->app->getSize();
 
-    // reverse y velocity if hits top
+    // reverse ball's y velocity if hits top of window
     if ((int) ballPos.y == 0)
     {
+        // makes sure velocity only flips once when hitting window border
         if (this->ball.vel.second < 0)
         {
             this->coll = true;
@@ -67,15 +72,18 @@ void Game::collision()
         }
     }
 
+    // reverse ball's y velocity if hits bottom of window
     if (ballRadius * 2 + (int) ballPos.y == winSize.y)
     {
+        // makes sure velocity only flips once when hitting window border
         if (this->ball.vel.second > 0)
         {
             this->coll = true;
             this->ball.vel.second *= -this->surprise(1);
         }
     }
-    // ai scores
+
+    // ai scores: give points and reset view and logic
     if (ballRadius - (int) ballPos.x == 0)
     {
         this->score.second++;
@@ -84,7 +92,7 @@ void Game::collision()
         this->aiScored = true;
     }
 
-    // player scores
+    // player scores: give points and reset view and logic
     if (ballRadius + (int) ballPos.x == winSize.x)
     {
         this->score.first++;
@@ -99,12 +107,20 @@ void Game::collision()
         if (this->obstacles.at(i)->shape.getGlobalBounds().intersects(ballBounds))
         {
             this->coll = true;
+
+            // apply perturbation to x
             this->ball.vel.first *= -this->surprise(0);
+
+            // move the ball an extra pixel so that it double collisions don't occur
             if (this->ball.vel.first > 0)
                 this->ball.shape.move(1, 0);
             else
                 this->ball.shape.move(-1, 0);
+
+            // apply perturbation to y
             this->ball.vel.second *= -this->surprise(1);
+
+            // move the ball an extra pixel so that it double collisions don't occur
             if (this->ball.vel.second > 0)
                 this->ball.shape.move(0, 1);
             else
@@ -113,9 +129,11 @@ void Game::collision()
     }
 };
 
+// method called from main to update the game logic
 void Game::update(sf::Int64 deltaMicro)
 {
     // process user input (or lack of)
+    // uses deltaMicro to keep number of frame traversed associated with real time, not frames/ticks
     switch(this->playerInput)
     {
         case Up:
@@ -130,6 +148,7 @@ void Game::update(sf::Int64 deltaMicro)
     };
 
     // process ai input (or lack of)
+    // uses deltaMicro to keep number of frame traversed associated with real time, not frames/ticks
     switch(this->aiInput)
     {
         case Up:
@@ -152,12 +171,9 @@ void Game::update(sf::Int64 deltaMicro)
     this->aiPaddle.shape.move(this->aiPaddle.vel.first, this->aiPaddle.vel.second);
 
     this->ball.shape.move(this->ball.vel.first * 0.001 * deltaMicro, this->ball.vel.second * 0.001 * deltaMicro);
-    
-    // also make sure paddle can't go past window boundary
-
-    // wait for player input to move the ball
 };
 
+// reset the game logic if game is restarted with 'r'
 void Game::restart()
 {
     this->playerPaddle.shape.setPosition(50, 270);

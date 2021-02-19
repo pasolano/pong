@@ -1,10 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "ai.h"
-#include "ball.h"
 #include "game.h"
-#include "paddle.h"
 #include "player.h"
-#include <utility>
 
 int main(int argc, char** argv)
 {
@@ -16,13 +13,17 @@ int main(int argc, char** argv)
   Game game(App);
   Player player(App, game);
   AI ai(game);
+  bool paused = false;
 
   // start main loop
   while(App.isOpen())
   {
+    // clear player view
     App.clear();
+
     // process events
     sf::Event Event;
+
     // while there are pending events
     while(App.pollEvent(Event))
     {
@@ -32,20 +33,36 @@ int main(int argc, char** argv)
         case(sf::Event::Closed):
           App.close();
           break;
+
+        // Pause Game
+        case(sf::Event::LostFocus):
+          paused = true;
+          break;
+
+        // Unpause Game
+        case(sf::Event::GainedFocus):
+          paused = false;
+          break;
       }
     }
-    // get time elapsed
-      dt = delta.restart();
-      sf::Int64 deltaMicro = dt.asMicroseconds();
 
-      // HOW TO MAKE SURE PLAYER VIEW HAS MOST RECENT GRAPHICS BUT GAME HAS MOST RECENT INPUTS
+    // get time elapsed
+    dt = delta.restart();
+    sf::Int64 deltaMicro = dt.asMicroseconds();
+
+    // update game logic if the game is in focus
+    if(!paused)
+    {
       player.update();
       ai.update();
       game.update(deltaMicro);
-      player.updateView();
+    }
 
-      // display
-      App.display();
+    // update what the player sees
+    player.updateView();
+
+    // display
+    App.display();
   }
 
   // Done.

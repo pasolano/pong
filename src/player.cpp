@@ -1,6 +1,7 @@
 #include <string>
 #include "player.h"
 
+// constructor
 Player::Player(sf::RenderWindow &app, Game &gameObj)
 {
     this->window = &app;
@@ -19,6 +20,7 @@ Player::Player(sf::RenderWindow &app, Game &gameObj)
     this->scoreText.setString("0 0");
 };
 
+// tells game logic the player's inputs
 void Player::update()
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -35,14 +37,16 @@ void Player::update()
         this->window->close();
 };
 
+// draws any drawable object to current window
 void Player::draw(sf::Drawable &drawable)
 {
     this->window->draw(drawable);
 };
 
+// calls draw() on all of our objects for the player view
 void Player::drawAll()
 {
-    this->scoreText.setString( std::to_string(this->game->score.first) + " " + std::to_string(this->game->score.second));
+    this->scoreText.setString(std::to_string(this->game->score.first) + " " + std::to_string(this->game->score.second));
     this->draw(this->scoreText);
     this->draw(this->game->playerPaddle.shape);
     this->draw(this->game->aiPaddle.shape);
@@ -54,6 +58,7 @@ void Player::drawAll()
     }
 };
 
+// draws the message saying who won the game
 void Player::gameOver(int whoWon)
 {
     sf::Text gameOverMsg;
@@ -70,55 +75,43 @@ void Player::gameOver(int whoWon)
         winner = "Player";
 
     gameOverMsg.setString(winner + " won!\nPress \'r\' to restart\nPress \'q\' to quit");
+
     this->draw(gameOverMsg);
 };
 
-void Player::sounds()
+// make sound if the passed flag is true
+// game logic owns the flags and changes when collisions occur
+void Player::makeSound(std::string filename, bool &flag)
 {
-    if (this->game->coll)
+    if (flag)
     {
-        // make sound
         static sf::SoundBuffer buffer;
-        if (!buffer.loadFromFile("../data/beep.wav"))
+        if (!buffer.loadFromFile("../data/" + filename + ".wav"))
             throw "Could not load sound";
         static sf::Sound sound;
         sound.setBuffer(buffer);
         sound.play();
-        this->game->coll = false;
-    }
-
-    if (this->game->playerScored)
-    {
-        // make sound
-        static sf::SoundBuffer buffer;
-        if (!buffer.loadFromFile("../data/ping.wav"))
-            throw "Could not load sound";
-        static sf::Sound sound;
-        sound.setBuffer(buffer);
-        sound.play();
-        this->game->playerScored = false;
-    }
-
-    if (this->game->aiScored)
-    {
-        // make sound
-        static sf::SoundBuffer buffer;
-        if (!buffer.loadFromFile("../data/error.wav"))
-            throw "Could not load sound";
-        static sf::Sound sound;
-        sound.setBuffer(buffer);
-        sound.play();
-        this->game->aiScored = false;
+        flag = false;
     }
 }
 
+// call sound() on all of our sounds and flags from game logic
+void Player::sounds()
+{
+    this->makeSound("beep", this->game->coll);
+    this->makeSound("ping", this->game->playerScored);
+    this->makeSound("error", this->game->aiScored);
+}
+
+// method that updates entire player view
+// called from main loop
 void Player::updateView()
 {
     auto score = this->game->score;
     if (score.first >= 11)
-        this->gameOver(0); // pass who won
+        this->gameOver(0); // 0 means player won
     else if (score.second >= 11)
-        this->gameOver(1);
+        this->gameOver(1); // 1 means AI won
     else
     {
         this->sounds();

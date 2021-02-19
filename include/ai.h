@@ -1,8 +1,3 @@
-// game.State() (to get state from game) (positions?)
-// move (in direction of ball)
-// inherit from view
-// send ai actions to game (game will call them)
-
 #include <SFML/Graphics.hpp>
 #include "game.h"
 
