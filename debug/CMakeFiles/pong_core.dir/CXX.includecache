@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../include/ai.h
+SFML/Graphics.hpp
+-
+game.h
+../include/game.h
+
 ../include/ball.h
 SFML/Graphics.hpp
 -
@@ -23,6 +29,12 @@ SFML/Graphics.hpp
 -
 utility
 -
+
+../include/player.h
+SFML/Graphics.hpp
+-
+game.h
+../include/game.h
 
 C:/Program Files (x86)/SFML/include/SFML/Config.hpp
 TargetConditionals.h
@@ -694,6 +706,10 @@ SFML/Config.hpp
 
 C:/Program Files (x86)/SFML/include/SFML/Window/WindowStyle.hpp
 
+C:/Users/pablo/Documents/classes/gamedes/pong/src/ai.cpp
+ai.h
+C:/Users/pablo/Documents/classes/gamedes/pong/src/ai.h
+
 C:/Users/pablo/Documents/classes/gamedes/pong/src/game.cpp
 SFML/Graphics.hpp
 -
@@ -703,4 +719,12 @@ utility
 -
 iostream
 -
+
+C:/Users/pablo/Documents/classes/gamedes/pong/src/player.cpp
+iostream
+-
+string
+-
+player.h
+C:/Users/pablo/Documents/classes/gamedes/pong/src/player.h
 

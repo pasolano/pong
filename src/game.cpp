@@ -96,3 +96,14 @@ void Game::update(sf::Int64 deltaMs)
 
     // wait for player input to move the ball
 };
+
+void Game::restart()
+{
+    this->playerPaddle.shape.setPosition(50, 270);
+    this->aiPaddle.shape.setPosition(750, 270);
+    this->ball.shape.setPosition(400, 300);
+    this->score.first = 0;
+    this->score.second = 0;
+    this->playerInput = None;
+    this->aiInput = None;
+}

@@ -12,13 +12,14 @@ class Game
         Paddle playerPaddle{50, 270};
         Paddle aiPaddle{750, 270};
         Ball ball{400, 300};
-        std::pair <float, float> score;
+        std::pair <int, int> score;
         direction playerInput{None};
         direction aiInput{None};
         sf::RenderWindow *app;
 
         void collision();
         void update(sf::Int64);
+        void restart();
 
         // constructor
         Game(sf::RenderWindow&);

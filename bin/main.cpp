@@ -33,24 +33,6 @@ int main(int argc, char** argv)
         case(sf::Event::Closed):
           App.close();
           break;
-
-        // // Arrow Keys
-        // case(sf::Event::KeyPressed):
-        //   switch(Event.key.code)
-        //   {
-        //     case(sf::Keyboard::Up):
-        //       player.move(Up);
-        //       break;
-        //     case(sf::Keyboard::Down):
-        //       player.move(Down);
-        //       break;
-        //     default:
-        //       break;
-        //   }
-
-        // default:
-        //   player.move(None);
-        //   break;
       }
     }
     // get time elapsed
@@ -61,7 +43,7 @@ int main(int argc, char** argv)
       player.update(deltaMs);
       ai.update(deltaMs);
       game.update(deltaMs);
-      player.drawAll(deltaMs);
+      player.updateView();
 
       // display
       App.display();

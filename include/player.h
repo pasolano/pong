@@ -1,9 +1,3 @@
-// inherit from view
-// possible sounds in future
-// player.cpp uses game.State() to get from it (with positions only maybe)
-// send actions inferred from input to game logic
-
-// draw points every tick?
 // have one method for drawActor(actor)
 
 #include <SFML/Graphics.hpp>
@@ -17,11 +11,14 @@ class Player
     public:
         sf::RenderWindow *window;
         Game *game;
+        sf::Text scoreText;
+        sf::Font font;
 
         void update(sf::Int32);
-        // void move(direction);
-        void draw(sf::Shape&);
-        void drawAll(sf::Int64);
+        void draw(sf::Drawable&);
+        void drawAll();
+        void gameOver(int);
+        void updateView();
 
         // Constructor
         Player(sf::RenderWindow &app, Game &gameObj);
