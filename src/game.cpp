@@ -62,7 +62,7 @@ void Game::collision()
     auto winSize = this->app->getSize();
 
     // reverse ball's y velocity if hits top of window
-    if ((int) ballPos.y == 0)
+    if ((int) ballPos.y <= 0)
     {
         // makes sure velocity only flips once when hitting window border
         if (this->ball.vel.second < 0)
@@ -73,7 +73,7 @@ void Game::collision()
     }
 
     // reverse ball's y velocity if hits bottom of window
-    if (ballRadius * 2 + (int) ballPos.y == winSize.y)
+    if (ballRadius * 2 + (int) ballPos.y >= winSize.y)
     {
         // makes sure velocity only flips once when hitting window border
         if (this->ball.vel.second > 0)
@@ -84,7 +84,7 @@ void Game::collision()
     }
 
     // ai scores: give points and reset view and logic
-    if (ballRadius - (int) ballPos.x == 0)
+    if ((int) ballPos.x - ballRadius <= 0)
     {
         this->score.second++;
         this->ball.shape.setPosition(400, 300);
@@ -93,7 +93,7 @@ void Game::collision()
     }
 
     // player scores: give points and reset view and logic
-    if (ballRadius + (int) ballPos.x == winSize.x)
+    if (ballRadius + (int) ballPos.x >= winSize.x)
     {
         this->score.first++;
         this->ball.shape.setPosition(400, 300);
